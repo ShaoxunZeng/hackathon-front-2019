@@ -6,10 +6,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: @default-foreground-darker-color;
 
   .bodyContent {
-    width: 100%;
-    height: @default-page-height;
-    background-color: @default-foreground-darker-color;
+    width: @default-page-width;
+    min-height: @default-page-height;
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: @default-radius;
   }
 }
