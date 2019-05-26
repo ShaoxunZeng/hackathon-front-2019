@@ -14,7 +14,7 @@ class UserAvatar extends Component {
       const { src } = this.props;
         return (
             <div className={styles.whole}>
-              <NavLink to={"/login"}>
+              <NavLink to={"/"}>
                 <Badge count={4} style={{ backgroundColor: '#8BC34A', color: '#ffffff' }}>
                   <Avatar shape='circle' src={src} className={styles.avatar} size={42}/>
                 </Badge>
