@@ -30,7 +30,7 @@ class Allrooms extends PureComponent {
 
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             gameInfo: {
