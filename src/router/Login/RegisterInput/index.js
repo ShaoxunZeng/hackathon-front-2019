@@ -1,6 +1,7 @@
 import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import * as React from "react";
 import {register} from "../../../services/apiHTTP"
+import {Alert} from 'antd'
 
 class RegisterInput extends React.Component {
     handleSubmit = e => {
@@ -12,7 +13,11 @@ class RegisterInput extends React.Component {
                     username: values.username,
                     password: values.password
                 }).then(res=>{
-                    console.log(res)
+                    if(res.success){
+                        this.props.history.push("/");
+                    }else{
+                        alert("注册失败")
+                    }
                 })
 
 

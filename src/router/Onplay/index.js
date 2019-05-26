@@ -17,8 +17,7 @@ const maps = [
             {x: 4, y: 6},
             {x: 4, y: 7},
             {x: 5, y: 9},
-            {x: 6, y: 7},
-            {x: 0, y: 7}]
+            {x: 6, y: 7}]
     },
     {
         username: 'user2',

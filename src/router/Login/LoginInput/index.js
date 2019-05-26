@@ -14,7 +14,11 @@ class LoginInput extends React.Component {
                     username: values.username,
                     password: values.password
                 }).then(res=>{
-                    console.log(res)
+                    if(res.success){
+                        this.props.history.push('/allgames')
+                    }else{
+                        alert("账户名或密码错误")
+                    }
                 })
             }
         });

@@ -9,7 +9,7 @@ import Onplay from "../Onplay";
 
 export default [
   <Route component={Allgames} exact path='/allgames'/>,
-  <Route component={Allrooms} exact path='/game/:id/allrooms'/>,
+  <Route component={Allrooms} exact path='/game/:gamename/allrooms'/>,
   <Route component={Onplay} exact path='/room/:id'/>,
   <Route component={Login} path='/'/>,
 ];

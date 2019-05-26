@@ -1,4 +1,4 @@
-import {PureComponent} from "react";
+import {Component} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import Square from "./square";
@@ -9,7 +9,7 @@ const calculate = (x, y) => {
   return {top: x * LENGTH_PERCENTAGE, left: y * LENGTH_PERCENTAGE}
 };
 
-class Board extends PureComponent {
+class Board extends Component {
   render() {
     const {maps} = this.props;
     const rows = new Array(14).fill(0);

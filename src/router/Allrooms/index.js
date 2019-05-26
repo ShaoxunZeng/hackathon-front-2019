@@ -41,16 +41,25 @@ class Allrooms extends PureComponent {
                     {roomId: 0, currentCount: 0, maxCount: 0}
                 ]
             },
+            isLoading: true
         }
 
     }
 
 
     componentWillMount() {
+        const {gamename} = this.props.match.params;
         //todo() 调用获取游戏信息接口 调用获取房间信息接口 合并
-
+        // getAllRooms(gamename).then((res) =>
+        //     this.setState({
+        //         gameInfo: res,
+        //         isLoading: false
+        //     })).catch((error) => {
+        //         alert(error);
+        // });
         this.setState({
             gameInfo: gameInfo,
+            isLoading: false
         })
     }
 
@@ -61,9 +70,8 @@ class Allrooms extends PureComponent {
     };
 
     render() {
-        const {id} = this.props.match.params;
-
-        return (
+        const {isLoading, gameInfo} = this.state;
+        return isLoading ? "" : (
 
             <div className={styles.whole}>
                 {/*{id}的所有房间*/}
