@@ -2,6 +2,7 @@ import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
 import {NavLink} from "react-router-dom";
+import WithHeaderFooter from "../../components/WithHeaderFooter";
 
 class Allgames extends PureComponent {
   render() {
@@ -16,4 +17,4 @@ class Allgames extends PureComponent {
   };
 }
 
-export default Allgames;
+export default WithHeaderFooter(Allgames);
