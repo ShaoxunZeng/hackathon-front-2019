@@ -1,6 +1,8 @@
 import { Form, Icon, Input, Button ,Checkbox} from 'antd';
 import * as React from "react";
 
+import {login, register} from "../../../services/apiHTTP"
+
 
 class LoginInput extends React.Component {
     handleSubmit = e => {
@@ -8,6 +10,12 @@ class LoginInput extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                login({
+                    username: values.username,
+                    password: values.password
+                }).then(res=>{
+                    console.log(res)
+                })
             }
         });
     };

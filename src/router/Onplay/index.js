@@ -11,51 +11,26 @@ import {Icon} from "antd"
 const maps = [
     {
         username: 'user1',
-        positions: [{
-            x: 5,
-            y: 7
-        }, {
-            x: 8,
-            y: 6
-        }, {
-            x: 4,
-            y: 6
-        }, {
-            x: 4,
-            y: 7
-        }, {
-            x: 5,
-            y: 9
-        }, {
-            x: 6,
-            y: 7
-        }, {
-            x: 0,
-            y: 7
-        }]
+        positions: [
+            {x: 5, y: 7},
+            {x: 8, y: 6},
+            {x: 4, y: 6},
+            {x: 4, y: 7},
+            {x: 5, y: 9},
+            {x: 6, y: 7},
+            {x: 0, y: 7}]
     },
     {
         username: 'user2',
-        positions: [{
-            x: 6,
-            y: 7
-        }, {
-            x: 5,
-            y: 9
-        }, {
-            x: 6,
-            y: 6
-        }, {
-            x: 6,
-            y: 7
-        }, {
-            x: 7,
-            y: 6
-        }]
+        positions: [
+            {x: 6, y: 7},
+            {x: 5, y: 9},
+            {x: 6, y: 6},
+            {x: 6, y: 7},
+            {x: 7, y: 6}]
     }
 ];
 
-//const roomInfo=
 
 class Onplay extends PureComponent {
     constructor(props) {
@@ -63,14 +38,14 @@ class Onplay extends PureComponent {
         this.state = {
             users: [],
             maps: [],
-            prepareStatus: false
+            prepareStatus: false //todo()
         }
     }
 
     componentWillMount() {
         //todo()  新建websocket请求房间人数 users
         this.setState({
-            users: ['UserA']
+            users: ['UserA', 'UserB']
         });
 
         if (this.state.users.length === 2) {
@@ -99,20 +74,22 @@ class Onplay extends PureComponent {
                     this.state.users.length === 2 ?
                         <div className={styles.wrapper}>
                             <div className={styles.leftScoreBoard}>
-                                <ScoreBoard user="Alexchanchic"
+                                <ScoreBoard user={this.state.users[0]} record={this.state.maps[0].positions}
                                             avatarColor="linear-gradient(120deg, #157c55 0%, #68c28a 100%)"
                                             defaultColor="rgba(128, 208, 199, 0.28)"/>
                             </div>
                             <div className={styles.board}>
-                                <Board maps={maps}/>
+                                {this.state.prepareStatus?
+                                    <Board maps={this.state.maps}/> :
+                                    <div className={styles.hintMsg}>对局即将开始</div>
+                                }
                             </div>
                             < div className={styles.rightScoreBoard}>
-                                <ScoreBoard user="cgy"
+                                <ScoreBoard user={this.state.users[1]} record={this.state.maps[1].positions}
                                             avatarColor="linear-gradient(120deg, #13547A 0%, #8fd3f4 100%)"
                                             defaultColor="rgba(148, 221, 255, 0.35)"/>
                             </div>
-                        </div>
-                        :
+                        </div> :
                         <div className={styles.waitStatus}>
                             <Board maps={maps}/>
                             <div className={styles.cover}>
@@ -121,7 +98,7 @@ class Onplay extends PureComponent {
                                     {/*todo() UI modify*/}
                                     <div>
                                         <Icon
-                                            style={{fontSize: 100 + 'px', marginTop: 10 + 'px',color:'#68c28a'}}
+                                            style={{fontSize: 100 + 'px', marginTop: 10 + 'px', color: '#68c28a'}}
                                             type="loading"/>
                                     </div>
                                 </div>
