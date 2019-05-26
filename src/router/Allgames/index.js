@@ -3,20 +3,17 @@ import React from "react";
 import styles from "./index.module.less";
 import {NavLink} from "react-router-dom";
 
-class Home extends PureComponent {
+class Allgames extends PureComponent {
   render() {
     return (
         <div className={styles.whole}>
-          Home
+          All games
           <NavLink to="/login">
             去登陆
-          </NavLink>
-          <NavLink to="/allgames">
-            所有游戏
           </NavLink>
         </div>
     )
   };
 }
 
-export default Home;
+export default Allgames;
