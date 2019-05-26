@@ -34,3 +34,9 @@ export const leaveRoom = (gameName, rid) => {
     method: "DELETE"
   })
 };
+
+export const enterRoom = (gameName, rid) => {
+  return request(`/game/${gameName}/${rid}/{username}`, {
+    method: "POST"
+  })
+};
