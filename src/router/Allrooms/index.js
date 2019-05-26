@@ -157,19 +157,19 @@ class Allrooms extends PureComponent {
                                                         <div>
                                                             <Icon type="laptop"
                                                                   spin
-                                                                  style={{fontSize: 100 + 'px', marginTop: 25 + 'px'}}/>
+                                                                  style={{fontSize: 80 + 'px', marginTop: 25 + 'px'}}/>
                                                             <p style={{marginTop: 40 + 'px'}}>该房间对战已开始！</p>
                                                         </div>
                                                         :
                                                         <div>
                                                             <Icon type="laptop"
-                                                                  style={{fontSize: 100 + 'px', marginTop: 10 + 'px'}}/>
+                                                                  style={{fontSize: 80 + 'px', marginTop: 10 + 'px'}}/>
                                                             <div className={styles.availableRoomMsg}>
                                                                 <p> 当前房间人数：<span style={{color:'#68c28a'}}>{room.currentCount}</span></p>
                                                                 <p> 共可容纳人数：{room.maxCount}</p>
 
                                                             </div>
-                                                            <Button size='large' style={{marginTop:10+'px',borderRadius: 10 + 'px',border:0,backgroundColor:"rgba(128, 208, 199, 0.56)"}}
+                                                            <Button size='large' className={styles.enterRoomButton}
                                                                     onClick={() => this.handleClick(room.roomId)}>
                                                                 <PandaIcon style={{fontSize: '25px'}}/> 加入对局
                                                             </Button>
