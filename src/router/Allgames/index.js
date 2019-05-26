@@ -60,7 +60,7 @@ class Allgames extends PureComponent {
         <Row gutter={16}>
           {gamesInfos.map((item) => {
             return (
-                <Col span={6}>
+                <Col span={8}>
                   <div className={styles.whole}>
                     <Card
                         style={{width: 360, margin: 20}}
