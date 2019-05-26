@@ -14,45 +14,69 @@
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
   .wrapper {
+
+    box-shadow: 10px 10px 10px 10px #BDBDBD;
     background-color: white;
-    height: 500px;
-    width: 800px;
+    height: 60%;
+    width: 50%;
     text-align: center;
-    color: white;
+    display: flex;
+    flex-direction: row;
+
 
     .leftWrapper {
+      height: 100%;
+      width:50%;
 
-      padding: 20px;
-      background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+      color: white;
+      padding:5% ;
+      background-image:  linear-gradient(120deg, #68c28a 0%, #8fd3f4 100%);;
+      //background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
       flex-direction: column;
 
-      .title {
+      .leftTitle {
         font-size: large;
-
       }
-
       .subtitle {
         font-size: xx-large;
+        margin-top:40px;
+        margin-bottom: 30px;
+
       }
 
-      .content {
-        font-size: small;
+      .leftContent {
+        margin-left:10%;
+        text-align: left;
+        font-size: medium;
       }
     }
 
     .rightWrapper {
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
+      height: 100%;
+      width:50%;
+
+      color:black;
+      padding:5% ;
+      text-align:center;
+      .rightTitle{
+        text-align:left;
+        font-size:larger;
+        font-weight: 700;
+      }
+      .loginInput{
+        margin-top:40px;
+        margin-bottom: 30px;
+      }
+      .hintText{
+        color:#68c28a
+      }
     }
 
   }
 
-  .image-board {
-    width: 100%;
+  .hidden {
+    display: none;
   }
 
-  .recent-movies {
-    margin-top: @default-space-between;
-    width: 100%;
-  }
+
 }

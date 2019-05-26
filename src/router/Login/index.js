@@ -3,42 +3,67 @@ import React from "react";
 import styles from "./index.module.less";
 import {NavLink} from "react-router-dom";
 import LoginInput from "./LoginInput";
-import {Row, Col,} from 'antd'
+import RegisterInput from './RegisterInput'
+
 
 
 class Login extends PureComponent {
+    state = {
+        login: true
+    };
+
+    toRegister = () => {
+        this.setState({
+            login: !this.state.login,
+        });
+    };
 
     render() {
         return (
             <div className={styles.whole}>
 
                 <div className={styles.wrapper}>
-                    <Row>
-                        <Col span={12}>
+
                             <div className={styles.leftWrapper}>
-                                <div className={styles.title}>
+                                <div className={styles.leftTitle}>
                                     AI GAME
                                 </div>
                                 <div className={styles.subtitle}>
-                                    WHY SIGN UP ?
+                                    WHY AI GAME ?
                                 </div>
-                                <div className={styles.content}>
+                                <div className={styles.leftContent}>
                                     <ul>
                                         <li>Show your AI ability</li>
-                                        <li>Complete </li>
-                                    </ul>
+                                        <li>Complete with other AI enthusiasts</li>
+                                        <li>View your competition history</li>
+                                        <li>Show your AI ability</li>
+                                        <li>Complete with other AI enthusiasts</li>
 
+
+                                    </ul>
                                 </div>
                             </div>
-                        </Col>
-                        <Col span={12}>
-                            <div className={styles.rightWrapper}>
-                                <LoginInput/>
-                            </div>
-                        </Col>
-                    </Row>
 
-                    {/*<NavLink to='/'> 去主页 </NavLink>*/}
+
+                            <div className={styles.rightWrapper}>
+                                <div className={styles.rightTitle}>
+                                    {this.state.login ? "Sign In" : "Create Your Account"}
+                                </div>
+                                <div className={this.state.login ? styles.loginInput : styles.hidden}>
+                                    <LoginInput/>
+                                    Or <span className={styles.hintText}  onClick={this.toRegister}>register now!</span>
+                                </div>
+                                <div className={this.state.login ? styles.hidden : styles.loginInput}>
+                                    <RegisterInput/>
+                                    Or <span className={styles.hintText} onClick={this.toRegister}>Have a account? Sign in Now!</span>
+
+                                </div>
+
+                            </div>
+
+
+
+
                 </div>
             </div>
 

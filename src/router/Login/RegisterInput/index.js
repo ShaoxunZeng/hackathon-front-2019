@@ -2,7 +2,7 @@ import { Form, Icon, Input, Button ,Checkbox} from 'antd';
 import * as React from "react";
 
 
-class LoginInput extends React.Component {
+class RegisterInput extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -15,7 +15,7 @@ class LoginInput extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <Form onSubmit={this.handleSubmit} className="login-form">
+            <Form onSubmit={this.handleSubmit} className="Register-form">
                 <Form.Item>
                     {getFieldDecorator('username', {
                         rules: [{ required: true, message: 'Please input your username!' }],
@@ -26,6 +26,7 @@ class LoginInput extends React.Component {
                         />,
                     )}
                 </Form.Item>
+
                 <Form.Item>
                     {getFieldDecorator('email', {
                         rules: [{ required: true, message: 'Please input your Email!' }],
@@ -51,15 +52,8 @@ class LoginInput extends React.Component {
 
 
                 <Form.Item>
-                    {getFieldDecorator('remember', {
-                        valuePropName: 'checked',
-                        initialValue: true,
-                    })(<Checkbox>Remember me</Checkbox>)}
-                    <a className="login-form-forgot" href="">
-                        Forgot password
-                    </a>
-                    <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
+                    <Button type="primary" htmlType="submit" className="register-form-button">
+                        Create an account
                     </Button>
                 </Form.Item>
             </Form>
@@ -67,7 +61,7 @@ class LoginInput extends React.Component {
     }
 }
 
-export default Form.create()(LoginInput);
+export default Form.create()(RegisterInput);
 
 
 
