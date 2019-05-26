@@ -2,18 +2,44 @@
 
 .whole {
   width: 100%;
+  padding: 1%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  .image-board {
-    background-color: @default-foreground-lighter-color;
-    width: 100%;
-  }
+  .wholeCard {
+    .gameIntro {
+      font-size: medium;
+      text-indent: 40px;
+      letter-spacing: 1px;
+      margin-top: 2%;
 
-  .recent-movies {
-    margin-top: @default-space-between;
-    background-color: @default-foreground-darker-color;
-    width: 100%;
+    }
+
+    .gamePic {
+      width: 100%;
+      height: auto;
+    }
+
+    .roomCard {
+      width: 360px;
+      margin: 20px;
+      height: 320px;
+      border-radius: 20px;
+      border: 4px outset rgba(128, 208, 199, 0.56);
+      box-shadow: 10px 10px 5px 4px #BDBDBD;
+
+
+
+      .roomMsg {
+        text-align: center;
+
+        .availableRoomMsg {
+          line-height: 10px;
+          margin-top: 16px;
+        }
+
+      }
+    }
   }
 }
