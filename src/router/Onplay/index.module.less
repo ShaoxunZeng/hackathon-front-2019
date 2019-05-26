@@ -4,6 +4,40 @@
   height: 100%;
   width: 100%;
 
+  .waitStatus {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    padding-top: 10%;
+    .cover {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      top: @header-height+20px;
+      display: flex;
+      height: @default-page-height;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      justify-content: center; /* 水平居中 */
+      align-items: center; /* 垂直居中 */
+      .msg {
+        border-radius: 20px;
+        height: 40%;
+        width: 50%;
+        background-color: white;
+        display: flex;
+        text-align: center;
+        justify-content: center; /* 水平居中 */
+        align-items: center; /* 垂直居中 */
+        font-size: 30px;
+
+      }
+    }
+  }
 
   .wrapper {
     height: 100%;
@@ -13,7 +47,7 @@
     text-align: center;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
-    padding-top:5%;
+    padding-top: 5%;
 
     .leftScoreBoard {
       width: @scoreboard-width;
@@ -22,8 +56,8 @@
 
     .board {
       width: @board-width;
-      margin-left:5%;
-      margin-right:5%;
+      margin-left: 5%;
+      margin-right: 5%;
 
     }
 

@@ -53,7 +53,7 @@ class Allrooms extends PureComponent {
     }
 
     handleClick = (roomId) => {
-        //todo() 进入房间比赛
+        //todo() 进入房间比赛 joinNewUser
         this.props.history.push(`/room/${roomId}`);
         console.log(roomId)
     };

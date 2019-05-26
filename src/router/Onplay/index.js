@@ -6,90 +6,136 @@ import WithHeaderFooter from "../../components/WithHeaderFooter";
 import Board from "../../components/Board";
 import ScoreBoard from "./ScoreBoard";
 import {getRoomInfo} from "../../services/apiWS";
+import {Icon} from "antd"
 
 const maps = [
-  {
-    id: 100,
-    positions: [{
-      x: 5,
-      y: 7
-    }, {
-      x: 8,
-      y: 6
-    }, {
-      x: 4,
-      y: 6
-    }, {
-      x: 4,
-      y: 7
-    }, {
-      x: 5,
-      y: 9
-    }, {
-      x: 6,
-      y: 7
-    }, {
-      x: 0,
-      y: 7
-    }]
-  },
-  {
-    id: 102,
-    positions: [{
-      x: 6,
-      y: 7
-    }, {
-      x: 5,
-      y: 9
-    }, {
-      x: 6,
-      y: 6
-    }, {
-      x: 6,
-      y: 7
-    }, {
-      x: 7,
-      y: 6
-    }]
-  }
+    {
+        username: 'user1',
+        positions: [{
+            x: 5,
+            y: 7
+        }, {
+            x: 8,
+            y: 6
+        }, {
+            x: 4,
+            y: 6
+        }, {
+            x: 4,
+            y: 7
+        }, {
+            x: 5,
+            y: 9
+        }, {
+            x: 6,
+            y: 7
+        }, {
+            x: 0,
+            y: 7
+        }]
+    },
+    {
+        username: 'user2',
+        positions: [{
+            x: 6,
+            y: 7
+        }, {
+            x: 5,
+            y: 9
+        }, {
+            x: 6,
+            y: 6
+        }, {
+            x: 6,
+            y: 7
+        }, {
+            x: 7,
+            y: 6
+        }]
+    }
 ];
 
+//const roomInfo=
+
 class Onplay extends PureComponent {
-  componentWillMount() {
-    let socket = getRoomInfo(20);
-    //打开事件
-    socket.onopen = function () {
-      console.log("Socket 已打开");
-    };
-    //获得消息事件
-    socket.onmessage = function (msg) {
-      console.log(JSON.parse(msg.data));
-      //发现消息进入    开始处理前端触发逻辑
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            maps: [],
+            prepareStatus: false
+        }
+    }
 
-  render() {
-    return (
-        <div className={styles.whole}>
-          <div className={styles.wrapper}>
-            <div className={styles.leftScoreBoard}>
-              <ScoreBoard user="Alexchanchic"
-                          avatarColor="linear-gradient(120deg, #157c55 0%, #68c28a 100%)"
-                          defaultColor="rgba(128, 208, 199, 0.28)"/>
-            </div>
-            <div className={styles.board}>
-              <Board maps={maps}/>
-            </div>
-            < div className={styles.rightScoreBoard}>
-              <ScoreBoard user="cgy"
-                          avatarColor="linear-gradient(120deg, #13547A 0%, #8fd3f4 100%)"
-                          defaultColor="rgba(148, 221, 255, 0.35)"/>
-            </div>
-          </div>
-        </div>
+    componentWillMount() {
+        //todo()  新建websocket请求房间人数 users
+        this.setState({
+            users: ['UserA']
+        });
 
-    )
-  };
+        if (this.state.users.length === 2) {
+            let socket = getRoomInfo(20);
+            //打开事件
+            socket.onopen = function () {
+                console.log("Socket 已打开");
+            };
+            //获得消息事件
+            socket.onmessage = function (msg) {
+                console.log(JSON.parse(msg.data));
+                //发现消息进入    开始处理前端触发逻辑
+                //todo() 房间满员后判断两个人的准备状态
+                this.setState({
+                    maps: maps,  //todo() test data
+                    prepareStatus: true //todo() test data
+                })
+            };
+        }
+    }
+
+    render() {
+        return (
+            <div className={styles.whole}>
+                {
+                    this.state.users.length === 2 ?
+                        <div className={styles.wrapper}>
+                            <div className={styles.leftScoreBoard}>
+                                <ScoreBoard user="Alexchanchic"
+                                            avatarColor="linear-gradient(120deg, #157c55 0%, #68c28a 100%)"
+                                            defaultColor="rgba(128, 208, 199, 0.28)"/>
+                            </div>
+                            <div className={styles.board}>
+                                <Board maps={maps}/>
+                            </div>
+                            < div className={styles.rightScoreBoard}>
+                                <ScoreBoard user="cgy"
+                                            avatarColor="linear-gradient(120deg, #13547A 0%, #8fd3f4 100%)"
+                                            defaultColor="rgba(148, 221, 255, 0.35)"/>
+                            </div>
+                        </div>
+                        :
+                        <div className={styles.waitStatus}>
+                            <Board maps={maps}/>
+                            <div className={styles.cover}>
+                                <div className={styles.msg}>
+                                    <div>等待其他玩家加入…</div>
+                                    {/*todo() UI modify*/}
+                                    <div>
+                                        <Icon
+                                            style={{fontSize: 100 + 'px', marginTop: 10 + 'px',color:'#68c28a'}}
+                                            type="loading"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                }
+
+            </div>
+
+        )
+    };
 }
 
 export default WithHeaderFooter(Onplay);
