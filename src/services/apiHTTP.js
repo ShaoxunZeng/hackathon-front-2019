@@ -29,3 +29,8 @@ export const getAllRooms = (gameName) => {
     })
 };
 
+export const leaveRoom = (gameName, rid) => {
+  return request(`/game/${gameName}/${rid}/{username}`, {
+    method: "DELETE"
+  })
+};
