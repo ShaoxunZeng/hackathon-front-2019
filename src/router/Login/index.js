@@ -24,9 +24,8 @@ class Login extends PureComponent {
                                 </div>
                                 <div className={styles.content}>
                                     <ul>
-                                        <li>
-
-                                        </li>
+                                        <li>Show your AI ability</li>
+                                        <li>Complete </li>
                                     </ul>
 
                                 </div>
