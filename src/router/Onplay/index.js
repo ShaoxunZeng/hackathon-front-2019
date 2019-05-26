@@ -26,7 +26,7 @@ const maps = [
             {x: 6, y: 7},
             {x: 5, y: 9},
             {x: 6, y: 6},
-            {x: 6, y: 7},
+            {x: 8, y: 7},
             {x: 7, y: 6}]
     }
 ];
@@ -37,8 +37,8 @@ class Onplay extends PureComponent {
         super(props);
         this.state = {
             users: [],
-            maps: [],
-            prepareStatus: false //todo()
+            maps: maps,
+            prepareStatus: true //todo()
         }
     }
 

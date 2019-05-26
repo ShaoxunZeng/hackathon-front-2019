@@ -53,56 +53,54 @@ const gamesInfos = Array(5).fill("AI 对战五子棋")
 ;
 
 class Allgames extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gamesInfos: [],
-      isLoading: true
+    constructor(props) {
+        super(props);
+        this.state = {
+            gamesInfos:gamesInfos
+        }
+
     }
 
-  }
+    componentWillMount() {
+        getAllGames().then(res=>{
+            this.setState({
+                gamesInfos:res.data
+            })
+        })
+    }
 
-  componentWillMount() {
-    getAllGames().then(res => {
-      this.setState({
-        gamesInfos: res,
-        isLoading: false
-      })
-    })
-  }
+    handleClick = (gameName) => {
+        this.props.history.push(`/game/${gameName}/allrooms`)
+    };
+    avatarUrl;
 
-  handleClick = (gameName) => {
-    this.props.history.push(`/game/${gameName}/allrooms`)
-  };
-
-  render() {
-    const {gamesInfos, isLoading} = this.state;
-    return isLoading ? "" : (
-        <Row gutter={16}>
-          {gamesInfos.map((item) => {
-            return (
-                <Col span={8}>
-                  <div className={styles.whole}>
-                    <Card
-                        style={{width: 360, margin: 20}}
-                        cover={
-                          <img
-                              alt="example"
-                              src='https://cdn.nlark.com/yuque/0/2019/png/248245/1558873338221-f29b560c-b606-4fd9-9476-3b173c0c4430.png'
-                          />
-                        }
-                        actions={[<Icon type="enter" onClick={() => this.handleClick(item)}/>]}
-                    >
-                      <Card.Meta
-                          title={item}
-                      />
-                    </Card>
-                  </div>
-                </Col>
-            )
-          })}
-        </Row>)
-  };
+    render() {
+        return (
+            <Row gutter={16}>
+                {gamesInfos.map((item) => {
+                    return (
+                        <Col span={8}>
+                            <div className={styles.whole}>
+                                <Card
+                                    style={{width: 360, margin: 20}}
+                                    cover={
+                                        <img
+                                            alt="example"
+                                            src='https://cdn.nlark.com/yuque/0/2019/png/248245/1558873338221-f29b560c-b606-4fd9-9476-3b173c0c4430.png'
+                                        />
+                                    }
+                                    actions={[<Icon type="enter" onClick={() => this.handleClick(item)}/>]}
+                                >
+                                    <Card.Meta
+                                        title={item}
+                                    />
+                                </Card>
+                            </div>
+                        </Col>
+                    )
+                })}
+            </Row>)
+    };
 }
 
 export default WithHeaderFooter(Allgames);
