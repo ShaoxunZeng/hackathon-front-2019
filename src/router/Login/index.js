@@ -23,6 +23,12 @@ class Login extends PureComponent {
                                     WHY SIGN UP ?
                                 </div>
                                 <div className={styles.content}>
+                                    <ul>
+                                        <li>
+
+                                        </li>
+                                    </ul>
+
                                 </div>
                             </div>
                         </Col>
