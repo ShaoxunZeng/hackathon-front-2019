@@ -2,6 +2,7 @@ import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import * as React from "react";
 
 import {login} from "../../../services/apiHTTP"
+import {withRouter} from "react-router";
 
 
 class LoginInput extends React.Component {
@@ -78,7 +79,7 @@ class LoginInput extends React.Component {
   }
 }
 
-export default Form.create()(LoginInput);
+export default withRouter(Form.create()(LoginInput));
 
 
 
