@@ -67,7 +67,6 @@ class Allrooms extends PureComponent {
 
     handleClick = (roomId) => {
         let token = "";
-
         enterRoom(this.state.gameInfo.gameName, roomId)
             .then((res) => {
                 token = res.token;
