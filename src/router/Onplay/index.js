@@ -48,8 +48,9 @@ class Onplay extends PureComponent {
 
     componentWillMount() {
         let roomid = this.props.match.params;
-        let {gameName} = this.props.location;
+        let {gameName, token} = this.props.location;
         let socket = getRoomInfo(gameName, roomid);
+        alert(`Your Token: ${token}`);
         //打开事件
         socket.onopen = function () {
             console.log("Socket 已打开");
