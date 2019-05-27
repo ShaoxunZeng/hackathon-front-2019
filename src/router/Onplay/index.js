@@ -58,14 +58,13 @@ class Onplay extends PureComponent {
         };
         //获得消息事件
         socket.onmessage = function (msg) {
-            console.log(msg);
-            console.log(JSON.parse(msg.data));
+            let tmaps = JSON.parse(msg.data);
             //发现消息进入    开始处理前端触发逻辑
             //todo() 房间满员后判断两个人的准备状态
             this.setState({
-                maps: JSON.parse(msg.data),  //todo() test data
+                maps: tmaps,  //todo() test data
             })
-        };
+        }.bind(this);
 
     }
 
