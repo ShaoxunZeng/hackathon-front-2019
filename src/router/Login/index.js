@@ -1,7 +1,6 @@
 import {PureComponent} from "react";
 import React from "react";
 import styles from "./index.module.less";
-import {NavLink} from "react-router-dom";
 import LoginInput from "./LoginInput";
 import RegisterInput from './RegisterInput'
 

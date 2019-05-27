@@ -1,7 +1,7 @@
 import {Form, Icon, Input, Button, Checkbox} from 'antd';
 import * as React from "react";
 
-import {login, register} from "../../../services/apiHTTP"
+import {login} from "../../../services/apiHTTP"
 
 
 class LoginInput extends React.Component {

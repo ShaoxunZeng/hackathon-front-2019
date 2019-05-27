@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./index.module.less";
-import {Row, Col, Avatar} from 'antd'
+import { Avatar} from 'antd'
 
 class ScoreBoard extends React.Component {
     render() {

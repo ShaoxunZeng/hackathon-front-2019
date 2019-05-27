@@ -50,17 +50,17 @@ class Allrooms extends PureComponent {
   componentWillMount() {
     const {gamename} = this.props.match.params;
     //todo() 调用获取游戏信息接口 调用获取房间信息接口 合并
-    // getAllRooms(gamename).then((res) =>
-    //     this.setState({
-    //         gameInfo: res,
-    //         isLoading: false
-    //     })).catch((error) => {
-    //         alert(error);
-    // });
-    this.setState({
-      gameInfo: gameInfo,
-      isLoading: false
-    })
+    getAllRooms(gamename).then((res) =>
+        this.setState({
+            gameInfo: res,
+            isLoading: false
+        })).catch((error) => {
+            alert(error);
+    });
+    // this.setState({
+    //   gameInfo: gameInfo,
+    //   isLoading: false
+    // })
   }
 
   handleClick = (roomId) => {
@@ -68,6 +68,7 @@ class Allrooms extends PureComponent {
     let token = "";
     enterRoom(this.state.gameInfo.gameName, roomId, window.localStorage.username).then((res) => {
       token = res.token;
+      console.log(token)
     });
     this.props.history.push(`/room/${roomId}`, {gameName: this.state.gameInfo.gameName});
     console.log(roomId)

@@ -1,12 +1,9 @@
 import request from "../utils/request";
 
-export const login = ({username = "", password = ""}) => {
+export const login = (payload) => {
   return request("/user/login", {
     method: "POST",
-    body: {
-      username,
-      password
-    }
+    body: payload
   });
 };
 
