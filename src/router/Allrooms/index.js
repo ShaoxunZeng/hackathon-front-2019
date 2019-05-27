@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import WithHeaderFooter from "../../components/WithHeaderFooter";
 import {Card, Row, Col, Icon, Button} from 'antd'
 import {enterRoom, getAllRooms} from "../../services/apiHTTP";
+import {withRouter} from "react-router";
 
 const {Meta} = Card;
 
@@ -169,4 +170,4 @@ class Allrooms extends PureComponent {
   };
 }
 
-export default WithHeaderFooter(Allrooms);
+export default withRouter(WithHeaderFooter(Allrooms));
