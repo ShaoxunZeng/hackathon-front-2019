@@ -33,24 +33,25 @@ const maps = [
 
 
 class Onplay extends PureComponent {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   users: [],
-    //   maps: maps,
-    //   prepareStatus: true //todo()
-    // }
-      this.state={
-          users:[],
-          maps:[],
-          prepareStatus:false
-      }
-  }
+    constructor(props) {
+        super(props);
+        // this.state = {
+        //   users: [],
+        //   maps: maps,
+        //   prepareStatus: true //todo()
+        // }
+        this.state = {
+            users: [],
+            maps: maps,
+            prepareStatus: true
+        }
+    }
 
     componentWillMount() {
         //todo()  新建websocket请求房间人数 users
         this.setState({
-            users: ['UserA', 'UserB']
+            users: ['UserA', 'UserB'],
+            maps: maps
         });
 
         if (this.state.users.length === 2) {
@@ -72,48 +73,48 @@ class Onplay extends PureComponent {
         }
     }
 
-  componentWillUnmount() {
-    let roomid = this.props.match.params;
-    let {gameName} = this.props.location;
-    leaveRoom(gameName, roomid, window.localStorage.username);
-  }
+    componentWillUnmount() {
+        let roomid = this.props.match.params;
+        let {gameName} = this.props.location;
+        leaveRoom(gameName, roomid, window.localStorage.username);
+    }
 
-  // render() {
-  //   return (
-  //       <div className={styles.whole}>
-  //         {
-  //           this.state.users.length === 2 ?
-  //               <div className={styles.wrapper}>
-  //                 <div className={styles.leftScoreBoard}>
-  //                   <ScoreBoard user={this.state.users[0]} record={this.state.maps[0].positions}
-  //                               avatarColor="linear-gradient(120deg, #157c55 0%, #68c28a 100%)"
-  //                               defaultColor="rgba(128, 208, 199, 0.28)"/>
-  //                 </div>
-  //                 <div className={styles.board}>
-  //                   {this.state.prepareStatus ?
-  //                       <Board maps={this.state.maps}/> :
-  //                       <div className={styles.hintMsg}>对局即将开始</div>
-  //                   }
-  //                 </div>
-  //                 < div className={styles.rightScoreBoard}>
-  //                   <ScoreBoard user={this.state.users[1]} record={this.state.maps[1].positions}
-  //                               avatarColor="linear-gradient(120deg, #13547A 0%, #8fd3f4 100%)"
-  //                               defaultColor="rgba(148, 221, 255, 0.35)"/>
-  //                 </div>
-  //               </div> :
-  //               <div className={styles.waitStatus}>
-  //                 <Board maps={maps}/>
-  //                 <div className={styles.cover}>
-  //                   <div className={styles.msg}>
-  //                     <div>等待其他玩家加入…</div>
-  //                     {/*todo() UI modify*/}
-  //                     <div>
-  //                       <Icon
-  //                           style={{fontSize: 100 + 'px', marginTop: 10 + 'px', color: '#68c28a'}}
-  //                           type="loading"/>
-  //                     </div>
-  //                   </div>
-  //                 </div>
+    // render() {
+    //   return (
+    //       <div className={styles.whole}>
+    //         {
+    //           this.state.users.length === 2 ?
+    //               <div className={styles.wrapper}>
+    //                 <div className={styles.leftScoreBoard}>
+    //                   <ScoreBoard user={this.state.users[0]} record={this.state.maps[0].positions}
+    //                               avatarColor="linear-gradient(120deg, #157c55 0%, #68c28a 100%)"
+    //                               defaultColor="rgba(128, 208, 199, 0.28)"/>
+    //                 </div>
+    //                 <div className={styles.board}>
+    //                   {this.state.prepareStatus ?
+    //                       <Board maps={this.state.maps}/> :
+    //                       <div className={styles.hintMsg}>对局即将开始</div>
+    //                   }
+    //                 </div>
+    //                 < div className={styles.rightScoreBoard}>
+    //                   <ScoreBoard user={this.state.users[1]} record={this.state.maps[1].positions}
+    //                               avatarColor="linear-gradient(120deg, #13547A 0%, #8fd3f4 100%)"
+    //                               defaultColor="rgba(148, 221, 255, 0.35)"/>
+    //                 </div>
+    //               </div> :
+    //               <div className={styles.waitStatus}>
+    //                 <Board maps={maps}/>
+    //                 <div className={styles.cover}>
+    //                   <div className={styles.msg}>
+    //                     <div>等待其他玩家加入…</div>
+    //                     {/*todo() UI modify*/}
+    //                     <div>
+    //                       <Icon
+    //                           style={{fontSize: 100 + 'px', marginTop: 10 + 'px', color: '#68c28a'}}
+    //                           type="loading"/>
+    //                     </div>
+    //                   </div>
+    //                 </div>
     render() {
         return (
             <div className={styles.whole}>
@@ -130,8 +131,13 @@ class Onplay extends PureComponent {
                                     <Board maps={this.state.maps}/> :
                                     <div className={styles.hintMsg}>
                                         AI对战即将开始
-                                        <Icon style={{fontSize: 50 + 'px', marginTop: 10 + 'px', color: '#68c28a',marginLeft:20+'px'}}
-                                               type="loading"/></div>
+                                        <Icon style={{
+                                            fontSize: 50 + 'px',
+                                            marginTop: 10 + 'px',
+                                            color: '#68c28a',
+                                            marginLeft: 20 + 'px'
+                                        }}
+                                              type="loading"/></div>
                                 }
                             </div>
                             < div className={styles.rightScoreBoard}>

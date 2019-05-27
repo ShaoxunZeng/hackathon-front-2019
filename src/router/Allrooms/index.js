@@ -9,26 +9,25 @@ import {withRouter} from "react-router";
 
 const {Meta} = Card;
 
-const gameInfo = {
-  gameName: 'AI 对战五子棋',
-  gameIntro: '五子棋是世界智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏，是世界智力运动会竞技项目之一，通常双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成5子连线者获胜。' +
-      '棋具与围棋通用，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区，是世界上最古老的棋。' +
-      '容易上手，老少皆宜，而且趣味横生，引人入胜；不仅能增强思维能力，提高智力，而且富含哲理，有助于修身养性。已在各个游戏平台有应用。',
-  gamePic: 'https://cdn.nlark.com/yuque/0/2019/png/248245/1558873338221-f29b560c-b606-4fd9-9476-3b173c0c4430.png',
-  rooms: [
-    {roomId: 1, currentCount: 0, maxCount: 2},
-    {roomId: 2, currentCount: 1, maxCount: 2},
-    {roomId: 3, currentCount: 0, maxCount: 2},
-    {roomId: 4, currentCount: 2, maxCount: 2},
-    {roomId: 5, currentCount: 0, maxCount: 2},
-    {roomId: 6, currentCount: 1, maxCount: 2},
-    {roomId: 7, currentCount: 0, maxCount: 2},
-    {roomId: 8, currentCount: 2, maxCount: 2},
-  ]
-};
+// const gameInfo = {
+//   gameName: 'AI 对战五子棋',
+//   gameIntro: '五子棋是世界智力运动会竞技项目之一，是一种两人对弈的纯策略型棋类游戏，是世界智力运动会竞技项目之一，通常双方分别使用黑白两色的棋子，下在棋盘直线与横线的交叉点上，先形成5子连线者获胜。' +
+//       '棋具与围棋通用，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区，是世界上最古老的棋。' +
+//       '容易上手，老少皆宜，而且趣味横生，引人入胜；不仅能增强思维能力，提高智力，而且富含哲理，有助于修身养性。已在各个游戏平台有应用。',
+//   gamePic: 'https://cdn.nlark.com/yuque/0/2019/png/248245/1558873338221-f29b560c-b606-4fd9-9476-3b173c0c4430.png',
+//   rooms: [
+//     {roomId: 1, currentCount: 0, maxCount: 2},
+//     {roomId: 2, currentCount: 1, maxCount: 2},
+//     {roomId: 3, currentCount: 0, maxCount: 2},
+//     {roomId: 4, currentCount: 2, maxCount: 2},
+//     {roomId: 5, currentCount: 0, maxCount: 2},
+//     {roomId: 6, currentCount: 1, maxCount: 2},
+//     {roomId: 7, currentCount: 0, maxCount: 2},
+//     {roomId: 8, currentCount: 2, maxCount: 2},
+//   ]
+// };
 
 class Allrooms extends PureComponent {
-
 
   constructor(props) {
     super(props);
@@ -69,10 +68,9 @@ class Allrooms extends PureComponent {
     let token = "";
     enterRoom(this.state.gameInfo.gameName, roomId).then((res) => {
       token = res.token;
-      console.log(token)
+      console.log(res)
     });
-    this.props.history.push(`/room/${roomId}`, {gameName: this.state.gameInfo.gameName});
-    console.log(roomId)
+   this.props.history.push(`/room/${roomId}`, {gameName: this.state.gameInfo.gameName});
   };
 
   render() {
@@ -160,11 +158,10 @@ class Allrooms extends PureComponent {
                       </Col>
                   )
                 })}
-              </Row>)
-
+              </Row>
             </Card>
           </Card>
-          ,
+
         </div>
     )
   };
