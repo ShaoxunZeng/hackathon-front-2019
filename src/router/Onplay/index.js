@@ -47,7 +47,8 @@ class Onplay extends PureComponent {
     }
 
     componentWillMount() {
-        let roomid = this.props.match.params;
+        let {roomid} = this.props.match.params;
+        console.log(roomid);
         let {gameName, token} = this.props.location.state;
         let socket = getRoomInfo(gameName, roomid);
         alert(`Your Token: ${token}`);
