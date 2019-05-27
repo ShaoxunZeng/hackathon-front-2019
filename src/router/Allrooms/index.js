@@ -67,7 +67,7 @@ class Allrooms extends PureComponent {
   handleClick = (roomId) => {
     //todo() 进入房间比赛 joinNewUser getToken confirm=>push
     let token = "";
-    enterRoom(this.state.gameInfo.gameName, roomId, window.localStorage.username).then((res) => {
+    enterRoom(this.state.gameInfo.gameName, roomId).then((res) => {
       token = res.token;
       console.log(token)
     });

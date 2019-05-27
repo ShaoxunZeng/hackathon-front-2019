@@ -32,8 +32,8 @@ export const leaveRoom = (gameName, rid, username) => {
   })
 };
 
-export const enterRoom = (gameName, rid, username) => {
-  return request(`/game/${gameName}/${rid}/${username}`, {
+export const enterRoom = (gameName, rid) => {
+  return request(`/game/${gameName}/${rid}`, {
     method: "POST"
   })
 };
