@@ -61,8 +61,7 @@ class Onplay extends PureComponent {
             //发现消息进入    开始处理前端触发逻辑
             //todo() 房间满员后判断两个人的准备状态
             this.setState({
-                maps: maps,  //todo() test data
-                prepareStatus: true //todo() test data
+                maps: msg.data,  //todo() test data
             })
         };
 
@@ -86,18 +85,18 @@ class Onplay extends PureComponent {
                                             defaultColor="rgba(128, 208, 199, 0.28)"/>
                             </div>
                             <div className={styles.board}>
-                                {this.state.prepareStatus ?
-                                    <Board maps={this.state.maps}/> :
-                                    <div className={styles.hintMsg}>
-                                        AI对战即将开始
-                                        <Icon style={{
-                                            fontSize: 50 + 'px',
-                                            marginTop: 10 + 'px',
-                                            color: '#68c28a',
-                                            marginLeft: 20 + 'px'
-                                        }}
-                                              type="loading"/></div>
-                                }
+                                {/*{this.state.prepareStatus ?*/}
+                                <Board maps={this.state.maps}/> :
+                                {/*<div className={styles.hintMsg}>*/}
+                                {/*AI对战即将开始*/}
+                                {/*<Icon style={{*/}
+                                {/*fontSize: 50 + 'px',*/}
+                                {/*marginTop: 10 + 'px',*/}
+                                {/*color: '#68c28a',*/}
+                                {/*marginLeft: 20 + 'px'*/}
+                                {/*}}*/}
+                                {/*type="loading"/></div>*/}
+                                {/*}*/}
                             </div>
                             < div className={styles.rightScoreBoard}>
                                 <ScoreBoard user={this.state.maps[1].username} record={this.state.maps[1].positions}
